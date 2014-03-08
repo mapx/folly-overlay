@@ -30,7 +30,7 @@ PDEPEND="sys-devel/libtool
 	dev-cpp/glog
 	dev-cpp/gflags
 	dev-libs/boost
-	dev-libs/double-conversion
+	>=dev-libs/double-conversion-1.1.5
 	"
 DEPEND="${PDEPEND}"
 
