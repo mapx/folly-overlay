@@ -33,7 +33,8 @@ PDEPEND="sys-devel/libtool
 	"
 DEPEND="${PDEPEND}"
 
-VERSION="074bdb7fc4"
+
+VERSION="527ce886369194ebbdaef842a0d96445203d171c"
 
 src_unpack() {
 	git clone ${EGIT_REPO_URI} ${S}
@@ -42,6 +43,7 @@ src_unpack() {
 src_prepare() {
 	cd "${S}/folly"
 	git checkout ${VERSION}
+	epatch "${FILESDIR}/${PV}-Makefile.am.diff"
 	sed -e 's,gtest-1.6.0/include,/usr/include/gtest,' \
 		-e '/^lib_LTLIBRARIES/d' \
 	   	-e '/^libgtes/d' \
