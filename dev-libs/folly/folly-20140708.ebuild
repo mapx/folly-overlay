@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -8,7 +8,6 @@ inherit eutils git-2
 
 DESCRIPTION="An open-source C++ library developed and used at Facebook"
 HOMEPAGE="https://github.com/facebook/folly"
-#SRC_URI="http://googletest.googlecode.com/files/gtest-1.6.0.zip"
 EGIT_PROJECT="${PN}"
 EGIT_REPO_URI="https://github.com/facebook/folly.git"
 
@@ -23,24 +22,22 @@ PDEPEND="sys-devel/libtool
     dev-libs/jemalloc
     app-arch/unzip
     dev-vcs/git
-	>=sys-devel/gcc-4.7.2
+	>=sys-devel/gcc-4.7.3
 	sys-devel/automake
 	sys-devel/autoconf
 	sys-devel/autoconf-archive
 	dev-cpp/glog
 	dev-cpp/gflags
 	dev-libs/boost
-	dev-libs/double-conversion
+	>=dev-libs/double-conversion-2.0.1[static-libs]
 	"
 DEPEND="${PDEPEND}"
 
-#S="/var/tmp/portage/dev-util/folly-9999/work/folly"
 
-VERSION="8ca18b6ef44d988eba9bc26bba94338291b97a70"
+VERSION="3454265de3e8bf73ac31e58a790cb790ccb52ab8"
 
 src_unpack() {
 	git clone ${EGIT_REPO_URI} ${S}
-	#unzip /usr/portage/distfiles/gtest-1.6.0.zip -d "${S}/folly/test/"
 }
 
 src_prepare() {
@@ -60,6 +57,8 @@ src_compile() {
 	cd "${S}/folly"
 	CPPFLAGS=-I/usr/include/double-conversion/ \
 		econf || die "econf failed"
+	CPPFLAGS=-I/usr/include/double-conversion/ \
+		emake || die "emake failed"
 	CPPFLAGS=-I/usr/include/double-conversion/ \
 		emake || die "emake failed"
 }
