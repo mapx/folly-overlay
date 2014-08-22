@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -8,9 +8,9 @@ inherit eutils git-2
 
 DESCRIPTION="An open-source C++ library developed and used at Facebook"
 HOMEPAGE="https://github.com/facebook/folly"
-#SRC_URI="http://googletest.googlecode.com/files/gtest-1.6.0.zip"
 EGIT_PROJECT="${PN}"
-EGIT_REPO_URI="https://github.com/facebook/folly.git"
+#EGIT_REPO_URI="https://github.com/facebook/folly.git"
+EGIT_REPO_URI="/home/yuchen.xie/folly"
 
 LICENSE="BSD"
 SLOT="0"
@@ -30,22 +30,21 @@ PDEPEND="sys-devel/libtool
 	dev-cpp/glog
 	dev-cpp/gflags
 	dev-libs/boost
-	dev-libs/double-conversion
+	>=dev-libs/double-conversion-2.0.1[static-libs]
 	"
 DEPEND="${PDEPEND}"
 
-#S="/var/tmp/portage/dev-util/folly-9999/work/folly"
 
-VERSION="bd4c2f962df01e622828496b0b68b60cc8ab0783"
+VERSION="6e46d468cf2876dd59c7a4dddcb4e37abf070b7a"
 
 src_unpack() {
 	git clone ${EGIT_REPO_URI} ${S}
-	#unzip /usr/portage/distfiles/gtest-1.6.0.zip -d "${S}/folly/test/"
 }
 
 src_prepare() {
 	cd "${S}/folly"
 	git checkout ${VERSION}
+	#epatch "${FILESDIR}/${PV}-Makefile.am.diff"
 	sed -e 's,gtest-1.6.0/include,/usr/include/gtest,' \
 		-e '/^lib_LTLIBRARIES/d' \
 	   	-e '/^libgtes/d' \
@@ -60,6 +59,8 @@ src_compile() {
 	cd "${S}/folly"
 	CPPFLAGS=-I/usr/include/double-conversion/ \
 		econf || die "econf failed"
+	CPPFLAGS=-I/usr/include/double-conversion/ \
+		emake || die "emake failed"
 	CPPFLAGS=-I/usr/include/double-conversion/ \
 		emake || die "emake failed"
 }
