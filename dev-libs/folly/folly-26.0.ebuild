@@ -34,7 +34,7 @@ PDEPEND="sys-devel/libtool
 DEPEND="${PDEPEND}"
 
 
-VERSION="acc54589227951293f8d3943911f4311468605c9"
+VERSION="7d2497f0e5"
 
 src_unpack() {
 	git clone ${EGIT_REPO_URI} ${S}

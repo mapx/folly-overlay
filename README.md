@@ -1,4 +1,6 @@
-folly-overlay
+gentoo-overlay
 ==============
 
-Gentoo overlay for Facebook folly library as well as Google double-conversion library
+Gentoo overlay for:
+ * [Facebook folly library](https://github.com/facebook/folly)
+ * [Mongodb cxx driver](https://github.com/mongodb/mongo-cxx-driver)
