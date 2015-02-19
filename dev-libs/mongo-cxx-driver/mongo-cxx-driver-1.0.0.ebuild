@@ -11,7 +11,7 @@ MY_P=legacy-${PV}
 
 DESCRIPTION="C++ Driver for MongoDB"
 HOMEPAGE="https://github.com/mongodb/mongo-cxx-driver"
-SRC_URI="https://github.com/mongodb/mongo-cxx-driver/archive/${MY_P}.tar.gz"
+SRC_URI="https://github.com/mongodb/mongo-cxx-driver/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3 Apache-2.0"
 SLOT="0"
