@@ -1,0 +1,49 @@
+experimental/fibers needs higher version of boost, which might not be tested and unmasked.
+This patch removes the module.
+
+--- Makefile.am.orig	2015-04-10 11:35:37.000000000 +0800
++++ Makefile.am	2015-04-10 19:53:49.763937260 +0800
+@@ -73,31 +73,6 @@
+ 	experimental/Bits.h \
+ 	experimental/EliasFanoCoding.h \
+ 	experimental/EventCount.h \
+-	experimental/fibers/AddTasks.h \
+-	experimental/fibers/AddTasks-inl.h \
+-	experimental/fibers/Baton.h \
+-	experimental/fibers/Baton-inl.h \
+-	experimental/fibers/BoostContextCompatibility.h \
+-	experimental/fibers/EventBaseLoopController.h \
+-	experimental/fibers/EventBaseLoopController-inl.h \
+-	experimental/fibers/Fiber.h \
+-	experimental/fibers/Fiber-inl.h \
+-	experimental/fibers/FiberManager.h \
+-	experimental/fibers/FiberManager-inl.h \
+-	experimental/fibers/FiberManagerMap.h \
+-	experimental/fibers/ForEach.h \
+-	experimental/fibers/ForEach-inl.h \
+-	experimental/fibers/GenericBaton.h \
+-	experimental/fibers/GuardPageAllocator.h \
+-	experimental/fibers/GuardPageAllocator-inl.h \
+-	experimental/fibers/LoopController.h \
+-	experimental/fibers/Promise.h \
+-	experimental/fibers/Promise-inl.h \
+-	experimental/fibers/SimpleLoopController.h \
+-	experimental/fibers/TimeoutController.h \
+-	experimental/fibers/traits.h \
+-	experimental/fibers/WhenN.h \
+-	experimental/fibers/WhenN-inl.h \
+ 	experimental/FunctionScheduler.h \
+ 	experimental/io/FsUtil.h \
+ 	experimental/JSONSchema.h \
+@@ -379,11 +354,6 @@
+ 	TimeoutQueue.cpp \
+ 	Uri.cpp \
+ 	Version.cpp \
+-	experimental/fibers/Baton.cpp \
+-	experimental/fibers/Fiber.cpp \
+-	experimental/fibers/FiberManager.cpp \
+-	experimental/fibers/FiberManagerMap.cpp \
+-	experimental/fibers/TimeoutController.cpp \
+ 	experimental/FunctionScheduler.cpp \
+ 	experimental/io/FsUtil.cpp \
+ 	experimental/JSONSchema.cpp \
