@@ -12,8 +12,8 @@ SRC_URI="https://github.com/facebook/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64"
-IUSE="-experimental-fibers"
+KEYWORDS="~amd64"
+IUSE=""
 
 PDEPEND="
 	app-arch/lz4
@@ -23,8 +23,7 @@ PDEPEND="
 	dev-cpp/glog
 	dev-cpp/gflags
     dev-cpp/gtest
-	experimental-fibers? ( >=dev-libs/boost-1.57.0 )
-	!experimental-fibers? ( >=dev-libs/boost-1.55.0 )
+	>=dev-libs/boost-1.56.0[context]
     dev-libs/jemalloc
 	dev-libs/libevent
 	dev-libs/openssl
@@ -41,6 +40,5 @@ DEPEND="${PDEPEND}"
 S="${WORKDIR}/${P}/folly"
 
 src_prepare() {
-	use experimental-fibers || epatch "${FILESDIR}/${P}-remove-experimental-fibers.patch"
 	autoreconf -ivf
 }
