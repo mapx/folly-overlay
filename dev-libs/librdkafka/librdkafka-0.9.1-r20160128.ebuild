@@ -8,7 +8,7 @@ inherit eutils
 
 DESCRIPTION="The Apache Kafka C/C++ library"
 HOMEPAGE="https://github.com/edenhill/librdkafka"
-SRC_URI="https://github.com/edenhill/${PN}/archive/{$PV}-wip1.tar.gz -> ${PF}.tar.gz"
+SRC_URI="https://github.com/edenhill/${PN}/archive/${PV}-wip1.tar.gz -> ${PF}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
