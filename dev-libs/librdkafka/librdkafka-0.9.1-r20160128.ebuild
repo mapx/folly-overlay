@@ -13,7 +13,7 @@ SRC_URI="https://github.com/edenhill/${PN}/archive/${PV}-wip1.tar.gz -> ${PF}.ta
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~hppa ~x86 amd64-linux"
-IUSE="+zlib +ssl +sasl +libcrypto +static-libs"
+IUSE="+zlib +ssl sasl +libcrypto +static-libs"
 
 PDEPEND="
 	sys-devel/gcc
@@ -29,10 +29,10 @@ S="${WORKDIR}/librdkafka-${PV}-wip1"
 
 src_configure() {
 	extra_options=" --disable-debug-symbols"
-	if not use ssl; then
+	if ! use ssl; then
 		extra_options+=" --disable-ssl"
 	fi
-	if not use sasl; then
+	if ! use sasl; then
 		extra_options+=" --disable-sasl"
 	fi
 
