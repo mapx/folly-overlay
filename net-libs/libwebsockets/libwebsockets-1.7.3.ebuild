@@ -13,7 +13,7 @@ SRC_URI="https://github.com/warmcat/libwebsockets/archive/v${PV}.tar.gz -> ${P}.
 LICENSE="libwebsockets"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="static-libs"
 
 DEPEND="
 	dev-util/cmake
@@ -22,5 +22,10 @@ DEPEND="
 RDEPEND=""
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-no_ecdh_h_file.patch # 457
+	epatch "${FILESDIR}"/${P}-no_ecdh_h_file.patch # issue 457
+}
+
+src_install() {
+	 cmake-utils_src_install
+	 use static-libs || rm -f "${D}"/usr/lib*/lib*.a || die
 }
