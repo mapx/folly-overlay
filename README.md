@@ -2,6 +2,7 @@ gentoo-overlay
 ==============
 
 Gentoo overlay for:
+ * [canonical libwebsockets.org websocket library](https://github.com/warmcat/libwebsockets)
  * [Apache Kafka](https://kafka.apache.org/)
  * [The Apache Kafka C/C++ library](https://github.com/edenhill/librdkafka)
  * [C++ implementation of the Google logging module](https://github.com/google/glog)
