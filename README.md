@@ -2,6 +2,7 @@ gentoo-overlay
 ==============
 
 Gentoo overlay for:
+ * [Google Performance Tools](https://github.com/gperftools/gperftools)
  * [canonical libwebsockets.org websocket library](https://github.com/warmcat/libwebsockets)
  * [Apache Kafka](https://kafka.apache.org/)
  * [The Apache Kafka C/C++ library](https://github.com/edenhill/librdkafka)

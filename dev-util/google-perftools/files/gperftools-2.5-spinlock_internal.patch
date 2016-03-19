@@ -1,0 +1,11 @@
+--- gperftools-2.5/src/base/spinlock_internal.cc
++++ gperftools-2.5/src/base/spinlock_internal.cc
+@@ -62,7 +62,7 @@
+   // Weak pseudo-random number generator to get some spread between threads
+   // when many are spinning.
+ #ifdef BASE_HAS_ATOMIC64
+-  static base::subtle::Atomic64 rand;
++  static AtomicWord rand;
+   uint64 r = base::subtle::NoBarrier_Load(&rand);
+   r = 0x5deece66dLL * r + 0xb;   // numbers from nrand48()
+   base::subtle::NoBarrier_Store(&rand, r);
