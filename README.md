@@ -2,6 +2,7 @@ gentoo-overlay
 ==============
 
 Gentoo overlay for:
+ * [libsass: A C/C++ implementation of a Sass compiler](https://github.com/sass/libsass)
  * [Google Performance Tools](https://github.com/gperftools/gperftools)
  * [canonical libwebsockets.org websocket library](https://github.com/warmcat/libwebsockets)
  * [Apache Kafka](https://kafka.apache.org/)
