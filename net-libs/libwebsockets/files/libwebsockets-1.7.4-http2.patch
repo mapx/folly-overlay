@@ -1,0 +1,10 @@
+--- libwebsockets-1.7.4/lib/ssl-http2.c
++++ libwebsockets-1.7.4/lib/ssl-http2.c
+@@ -125,6 +125,7 @@
+ 		return;
+ 	}
+ 
++	(void)method;
+ 	lwsl_info("negotiated %s using %s\n", name, method);
+ 	wsi->use_ssl = 1;
+ 	if (strncmp((char *)name, "http/1.1", 8) == 0)
