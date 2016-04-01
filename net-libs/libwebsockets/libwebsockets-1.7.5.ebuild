@@ -21,12 +21,6 @@ RDEPEND="
 	"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-http2.patch #473
-
-	eapply_user
-}
-
 src_configure() {
 	local mycmakeargs=(
 	-DLWS_WITH_STATIC=$(usex static-libs)
