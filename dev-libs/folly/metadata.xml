@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>cpp</herd>
-  <maintainer>
-	  <email>yuchen.xie@live.com</email>
-	  <name>Yuchen Xie</name>
-  </maintainer>
+	<maintainer type="person">
+		<email>yuchen.xie@live.com</email>
+		<name>Yuchen Xie</name>
+		<description>Proxy-Maintainer. Assign bugs to him</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		An open-source C++ library developed and used at Facebook.
+	</longdescription>
   <use>
-	<flag name='experimental-fibers' restrict='&gt;&eq;dev-libs/folly-0.35.0'>
-      Build and install the experimental module fibers, which requires high level boost version.
-    </flag>
+	  <flag name='static-libs'>Build static libraries</flag>
+	  <flag name='shared-libs'>Build shared libraries</flag>
   </use>
 </pkgmetadata>

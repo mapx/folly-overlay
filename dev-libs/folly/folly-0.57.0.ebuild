@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/facebook/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="+static-libs +shared-libs"
 
 PDEPEND="
 	app-arch/lz4
@@ -23,16 +23,12 @@ PDEPEND="
 	dev-cpp/glog
 	dev-cpp/gflags
     dev-cpp/gtest
-	>=dev-libs/boost-1.56.0[context]
+	dev-libs/boost
     dev-libs/jemalloc
 	dev-libs/libevent
 	dev-libs/openssl
-	>=dev-libs/double-conversion-2.0.1[static-libs]
+	dev-libs/double-conversion
 	sys-devel/libtool
-	sys-devel/automake
-	sys-devel/autoconf
-	sys-devel/autoconf-archive
-	>=sys-devel/gcc-4.8.0
 	sys-libs/zlib
 	"
 DEPEND="${PDEPEND}"
@@ -40,6 +36,13 @@ DEPEND="${PDEPEND}"
 S="${WORKDIR}/${P}/folly"
 
 src_prepare() {
-	#use experimental-fibers || epatch "${FILESDIR}/${P}-remove-experimental-fibers.patch"
 	autoreconf -ivf
+}
+
+
+src_configure() {
+	    econf \
+			$(use_enable static-libs ) \
+			$(use_enable shared-libs ) \
+			--with-gnu-ld
 }
