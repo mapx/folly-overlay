@@ -6,14 +6,16 @@ EAPI=6
 
 inherit autotools
 
+VERSION_STR=${PV#0.}
+
 DESCRIPTION="An open-source C++ library developed and used at Facebook"
 HOMEPAGE="https://github.com/facebook/folly"
-SRC_URI="https://github.com/facebook/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/facebook/${PN}/archive/v${VERSION_STR}.tar.gz -> ${PN}-${VERSION_STR}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="static-libs"
+IUSE="+static-libs shared-libs"
 
 RDEPEND="
 	app-arch/lz4:=
@@ -21,23 +23,19 @@ RDEPEND="
 	app-arch/xz-utils:=
 	dev-cpp/glog:=
 	dev-cpp/gflags:=
-	|| (
-	  dev-libs/boost:0/1.56.0
-	  dev-libs/boost:0/1.58.0
-	)
+	dev-libs/boost:0/1.62.0
 	dev-libs/double-conversion:=
 	dev-libs/jemalloc:=
 	dev-libs/libevent:=
 	dev-libs/openssl:0=
 	>=sys-devel/gcc-4.8.5:*
-	<sys-devel/gcc-5.1.0:*
 	sys-libs/zlib:=
 	"
 DEPEND="${RDEPEND}
 	dev-cpp/gtest
 	"
 
-S="${S}/folly"
+S="${WORKDIR}/folly-${VERSION_STR}/folly"
 
 src_prepare() {
 	default
@@ -45,5 +43,6 @@ src_prepare() {
 }
 
 src_configure() {
+	econf $(use_enable shared-libs shared)
 	econf $(use_enable static-libs static)
 }
