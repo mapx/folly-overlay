@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+#: Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -43,6 +43,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable shared-libs shared)
-	econf $(use_enable static-libs static)
+	econf \
+		$(use_enable shared-libs shared) \
+		$(use_enable static-libs static)
 }
